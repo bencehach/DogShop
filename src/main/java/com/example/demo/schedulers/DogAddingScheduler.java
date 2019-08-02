@@ -1,7 +1,6 @@
 package com.example.demo.schedulers;
 
 
-import com.example.demo.entities.Dog;
 import com.example.demo.services.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -29,19 +28,18 @@ public class DogAddingScheduler {
     @Scheduled(cron = "59 59 23 28 2 *")
     @Scheduled(cron = "59 59 23 30 4,5,9,11 *")
     @Scheduled(cron = "59 59 23 31 1,3,5,7,8,10,12 *")
-    public void addRandomDog()
-    {
+    public void addRandomDog() {
 
-        String randomDogName=randomGeneratedString();
-        Random random=new Random();
+        String randomDogName = randomGeneratedString();
+        Random random = new Random();
 
-        int randomAge =random.nextInt(10);
+        int randomAge = random.nextInt(10);
 
-        boolean randomSterilized=Math.random()<0.5;
+        boolean randomSterilized = random.nextBoolean();
 
-        String randomGender =(Math.random()<0.5) ? "female" : "male";
+        String randomGender = random.nextBoolean() ? "female" : "male";
 
-        dogService.createDog(randomDogName,randomAge,randomGender,randomSterilized,6);
+        dogService.createDog(randomDogName, randomAge, randomGender, randomSterilized, 6);
 
     }
 
@@ -57,7 +55,7 @@ public class DogAddingScheduler {
             buffer.append((char) randomLimitedInt);
         }
         return buffer.toString();
-         }
     }
+}
 
 
